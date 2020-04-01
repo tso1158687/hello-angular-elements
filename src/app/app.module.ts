@@ -1,18 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
 
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardComponent } from './card/card.component';
 import { PanelComponent } from './panel/panel.component';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatCardModule} from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
+// import angular elements
+import { createCustomElement } from '@angular/elements';
 @NgModule({
-  declarations: [
-    AppComponent,
-    CardComponent,
-    PanelComponent
-  ],
+  declarations: [CardComponent, PanelComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -20,6 +17,14 @@ import {MatCardModule} from '@angular/material/card';
     MatCardModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
-export class AppModule { }
+export class AppModule {
+  constructor(injector: Injector) {
+    const customCard: any = createCustomElement(CardComponent, { injector });
+    const customPanel: any = createCustomElement(PanelComponent, { injector });
+    customElements.define('custom-card', customCard);
+    customElements.define('custom-panel', customPanel);
+  }
+  ngDoBootstrap() {}
+}
