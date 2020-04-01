@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --output-hashing=none",
+    "pack": "cat dist/hello-angular-elements/{runtime-es2015,polyfills-es2015,main-es2015}.js > all.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
