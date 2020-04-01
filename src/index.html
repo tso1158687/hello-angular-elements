@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>HelloAngularElements</title>
@@ -9,9 +10,20 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+
 <body>
-  <custom-header></custom-header>
+  <custom-header title="我是從外部的自訂標題"></custom-header>
   <custom-card></custom-card>
   <custom-panel></custom-panel>
+  <script>
+    console.log('index')
+    const component = document.querySelector('custom-card');
+    console.log(component)
+    component.addEventListener('triggerEvent', event=>{
+      console.log(event)
+      alert(event.detail)
+    });
+  </script>
 </body>
+
 </html>
