@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>一個全新的網站</title>
+    <link rel="stylesheet" href="./styles.css">
+    <title>全新的空白頁面</title>
 </head>
+
 <body>
-    <h1>一個全新的空白網站</h1>
-    <custom-header></custom-header>
+    <custom-header title="我是從外部的自訂標題"></custom-header>
+    <h1>我是全新的頁面</h1>
     <custom-card></custom-card>
     <custom-panel></custom-panel>
     <script src="./all.js"></script>
+    <script>
+        console.log('index')
+        const component = document.querySelector('custom-card');
+        console.log(component)
+        component.addEventListener('triggerEvent', event => {
+            console.log(event)
+            alert(event.detail)
+        });
+    </script>
 </body>
+
 </html>
